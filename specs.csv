@@ -1,7 +1,7 @@
 class,id,name,type,method,initialization_arg_1,method_arg_1,method_arg_2,method_arg_3,expected
 GameInput,GameInput-1.1,re-order move from a1->1a,instance,reorder_move,,a1,,,"1a"
 TurnMaster,Turnmaster-1.1,Checks who's turn it is,instance,whos_turn,,1,"Steve","Bob","Steve"
-Adjudicator,Adjudicator-1.2,Getting x score of 0,instance,get_x_tally,,"[[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']],[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']],[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]]",,,"0"
-Adjudicator,Adjudicator-1.3,Getting o score of 0,instance,get_o_tally,,"[[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']],[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']],[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]]",,,"0"
-Adjudicator,Adjudicator-1.4,Getting x score of 20,instance,get_x_tally,,"[[['x','o','x'],['x','x','o'],['o','o','x']],[['x','x','x'],['o','o','o'],['o','o','o']],[['x','o','x'],['x','o','x'],['x','o','x']]]",,,"20"
-Adjudicator,Adjudicator-1.5,Getting o score of 15,instance,get_o_tally,,"[[['x','o','x'],['x','x','o'],['o','o','x']],[['x','x','x'],['o','o','o'],['o','o','o']],[['x','o','x'],['x','o','x'],['x','o','x']]]",,,"15"
+Adjudicator,Adjudicator-1.2,Getting x score of 0,instance,tally_up_x,,"[[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']],[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']],[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]]",,,"0"
+Adjudicator,Adjudicator-1.3,Getting o score of 0,instance,tally_up_o,,"[[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']],[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']],[[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]]",,,"0"
+Adjudicator,Adjudicator-1.4,Getting x score of 20,instance,tally_up_x,,"[[['x','o','x'],['x','x','o'],['o','o','x']],[['x','x','x'],['o','o','o'],['o','o','o']],[['x','o','x'],['x','o','x'],['x','o','x']]]",,,"20"
+Adjudicator,Adjudicator-1.5,Getting o score of 15,instance,tally_up_o,,"[[['x','o','x'],['x','x','o'],['o','o','x']],[['x','x','x'],['o','o','o'],['o','o','o']],[['x','o','x'],['x','o','x'],['x','o','x']]]",,,"15"
