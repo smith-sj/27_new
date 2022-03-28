@@ -24,40 +24,30 @@ loop do
   # Choose Game Mode Loop
   loop do
     # Player vs Player
-
     case game_mode
     when '1'
       setup_clean_board
       GameMode.new.p_v_p(@game_squares)
       GameInput.new.wait_for_enter("continue")
       break
-
-
     # Player vs AI
-
     when '2'
       setup_clean_board
       GameMode.new.p_v_ai(@game_squares)
       GameInput.new.wait_for_enter("continue")
       break
-
     # AI vs AI
-
     when '3'
       setup_clean_board
       GameMode.new.ai_v_ai(@game_squares)
       GameInput.new.wait_for_enter("continues")
       break
-
     # Read Rules
-
     when '4'
       GameOutput.new.how_to_play
       GameInput.new.wait_for_enter("go back")
       break
-
     # Invalid option
-
     else
       GameOutput.new.start_screen
       GameOutput.new.user_error(0)

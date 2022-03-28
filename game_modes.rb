@@ -5,6 +5,8 @@ require_relative 'adjudicator'
 require_relative 'turn_master'
 
 class GameMode
+
+  MAX_TURNS = 27
   #----- PvP MODE -----
 
   def p_v_p(game_squares)
@@ -23,7 +25,7 @@ class GameMode
       token = player_name == player_x_name.to_s ? 'x' : 'o'
 
       Player.new.play_turn(player_x_name, player_o_name, player_name, token, game_squares)
-      next unless turn_count >= 27
+      next unless turn_count >= MAX_TURNS
 
       x_tally = Adjudicator.new.tally_up_x(game_squares)
       o_tally = Adjudicator.new.tally_up_o(game_squares)
@@ -59,7 +61,7 @@ class GameMode
       else
         Player.new.play_turn(player_x_name, player_o_name, player_name, token, game_squares)
       end
-      next unless turn_count >= 27
+      next unless turn_count >= MAX_TURNS
 
       x_tally = Adjudicator.new.tally_up_x(game_squares)
       o_tally = Adjudicator.new.tally_up_o(game_squares)
@@ -93,7 +95,7 @@ class GameMode
       Ai.new.play_ai_turn(player_x_name, player_o_name, player_name, token, game_squares)
       if player_name == player_o_name
       end
-      next unless turn_count >= 27
+      next unless turn_count >= MAX_TURNS
 
       x_tally = Adjudicator.new.tally_up_x(game_squares)
       o_tally = Adjudicator.new.tally_up_o(game_squares)
