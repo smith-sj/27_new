@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colorize (0.8.1)
+    cspec (0.2.9)
+      colorize (~> 0.8.1)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  cspec
+
+BUNDLED WITH
+   2.3.9
