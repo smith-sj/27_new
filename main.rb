@@ -9,6 +9,11 @@ require_relative 'ai'
 require_relative 'player'
 require_relative 'game_modes'
 
+def setup_clean_board
+  game_board = GameBoard.new
+  @game_squares = game_board.squares
+end
+
 # -----MAIN LOOP-----
 
 loop do
@@ -22,48 +27,40 @@ loop do
 
     case game_mode
     when '1'
-      game_board = GameBoard.new
-      game_squares = game_board.squares
-      GameMode.new.p_v_p(game_squares)
-      puts 'Press ENTER to continue'
-      gets
+      setup_clean_board
+      GameMode.new.p_v_p(@game_squares)
+      GameInput.new.wait_for_enter("continue")
       break
+
 
     # Player vs AI
 
     when '2'
-      game_board = GameBoard.new
-      game_squares = game_board.squares
-      GameMode.new.p_v_ai(game_squares)
-      puts 'Press ENTER to continue'
-      gets
+      setup_clean_board
+      GameMode.new.p_v_ai(@game_squares)
+      GameInput.new.wait_for_enter("continue")
       break
 
     # AI vs AI
 
     when '3'
-      game_board = GameBoard.new
-      game_squares = game_board.squares
-      GameMode.new.ai_v_ai(game_squares)
-      puts 'Press ENTER to continue'
-      gets
+      setup_clean_board
+      GameMode.new.ai_v_ai(@game_squares)
+      GameInput.new.wait_for_enter("continues")
       break
 
     # Read Rules
 
     when '4'
-      input = File.read('./rules.txt')
-      puts input
-      puts "↑ SCROLL TO TOP FOR RULES ↑\n\n"
-      puts 'Press ENTER back to menu'
-      gets
+      GameOutput.new.how_to_play
+      GameInput.new.wait_for_enter("go back")
       break
 
     # Invalid option
 
     else
       GameOutput.new.start_screen
-      puts "\nPlease type '1', '2' or '3' and press ENTER"
+      GameOutput.new.user_error(0)
       game_mode = gets.strip
       system('cls') || system('clear')
     end

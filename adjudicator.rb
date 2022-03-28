@@ -15,7 +15,7 @@ class Adjudicator
       arr << (current_game[n1 + (i1 * i)][n2 + (i2 * i)][n3 + (i3 * i)])
       i += 1
     end
-    return arr.join()
+    arr.join()
   end
 
   # The 8 flat combos are identical on all boards, this tallies all 24 in one loop
@@ -33,7 +33,7 @@ class Adjudicator
         incrementer(current_game,(0+i),2,0,0,0,1))
       i += 1
     end
-    return arr
+    arr
   end
 
   # tally up score

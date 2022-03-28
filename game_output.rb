@@ -3,7 +3,7 @@
 class GameOutput
   # prints the main game screen
   def print_game(player_x, player_o, to_print, x_tally, o_tally)
-    # system('cls') || system('clear')
+    system('cls') || system('clear')
     printed_rows = [
       ['|', to_print[2][0][0], '|', to_print[2][0][1], '|', to_print[2][0][2], '|'],
       ['|', to_print[2][1][0], '|', to_print[2][1][1], '|', to_print[2][1][2], '|'],
@@ -59,4 +59,22 @@ class GameOutput
                 \n4. How To Play"
     puts "\n\nType 1,2,3 or 4 > press ENTER"
   end
+
+  # Prompt press ENTER
+  def prompt_enter(go)
+    puts "Press ENTER to #{go}"
+  end
+    
+  # Print How To Play
+  def how_to_play
+    input = File.read('./rules.txt')
+    puts input
+    puts "↑ SCROLL TO TOP FOR RULES ↑\n\n"
+  end
+
+  def user_error(code)
+    error_codes = ["\nInvalid choice!",]
+    puts error_codes[code]
+  end
+
 end
