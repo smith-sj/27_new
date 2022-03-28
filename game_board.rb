@@ -19,5 +19,4 @@ class GameBoard
        [' ', ' ', ' ']]
     ]
   end
-
 end

@@ -64,7 +64,7 @@ class GameOutput
   def prompt_enter(go)
     puts "Press ENTER to #{go}"
   end
-    
+
   # Print How To Play
   def how_to_play
     input = File.read('./rules.txt')
@@ -73,8 +73,7 @@ class GameOutput
   end
 
   def user_error(code)
-    error_codes = ["\nInvalid choice!",]
+    error_codes = ["\nInvalid choice!", "\nInvalid Move! Try Again.\n", "\nStack is full! Try Again\n"]
     puts error_codes[code]
   end
-
 end

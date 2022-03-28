@@ -8,14 +8,14 @@ class Adjudicator
   end
 
   # n1-n3 = starting numbers & i1-i3 = increments
-  def incrementer(current_game,n1,n2,n3,i1,i2,i3)
+  def incrementer(current_game, n1, n2, n3, i1, i2, i3)
     i = 0
     arr = []
     while i < 3
       arr << (current_game[n1 + (i1 * i)][n2 + (i2 * i)][n3 + (i3 * i)])
       i += 1
     end
-    arr.join()
+    arr.join
   end
 
   # The 8 flat combos are identical on all boards, this tallies all 24 in one loop
@@ -23,14 +23,14 @@ class Adjudicator
     i = 0
     arr = []
     while i < 3
-      arr.push(incrementer(current_game,(0+i),0,0,0,0,1),
-        incrementer(current_game,(0+i),0,0,0,1,0),
-        incrementer(current_game,(0+i),0,0,0,1,1),
-        incrementer(current_game,(0+i),0,1,0,1,0),
-        incrementer(current_game,(0+i),0,2,0,1,-1),
-        incrementer(current_game,(0+i),0,2,0,1,0),
-        incrementer(current_game,(0+i),1,0,0,0,1),
-        incrementer(current_game,(0+i),2,0,0,0,1))
+      arr.push(incrementer(current_game, (0 + i), 0, 0, 0, 0, 1),
+               incrementer(current_game, (0 + i), 0, 0, 0, 1, 0),
+               incrementer(current_game, (0 + i), 0, 0, 0, 1, 1),
+               incrementer(current_game, (0 + i), 0, 1, 0, 1, 0),
+               incrementer(current_game, (0 + i), 0, 2, 0, 1, -1),
+               incrementer(current_game, (0 + i), 0, 2, 0, 1, 0),
+               incrementer(current_game, (0 + i), 1, 0, 0, 0, 1),
+               incrementer(current_game, (0 + i), 2, 0, 0, 0, 1))
       i += 1
     end
     arr
@@ -38,42 +38,42 @@ class Adjudicator
 
   # tally up score
   def tally_up(current_game)
-
-    #Points Awarded for Flats, Pillars, Stairs, Diamond Stairs
-    combo_points = [3,2,2,1]
+    # Points Awarded for Flats, Pillars, Stairs, Diamond Stairs
+    combo_points = [3, 2, 2, 1]
 
     # Combinations of 3 squares, across 3 boards, where points can be scored
     combo_groups = [
-      #FLATS
+      # FLATS
       flats_counter(current_game),
-      #PILLARS
-      [incrementer(current_game,0,0,0,1,0,0),
-        incrementer(current_game,0,0,1,1,0,0),
-        incrementer(current_game,0,0,2,1,0,0),
-        incrementer(current_game,0,1,0,1,0,0),
-        incrementer(current_game,0,1,1,1,0,0),
-        incrementer(current_game,0,1,2,1,0,0),
-        incrementer(current_game,0,2,0,1,0,0),
-        incrementer(current_game,0,2,1,1,0,0),
-        incrementer(current_game,0,2,2,1,0,0),],
+      # PILLARS
+      [incrementer(current_game, 0, 0, 0, 1, 0, 0),
+       incrementer(current_game, 0, 0, 1, 1, 0, 0),
+       incrementer(current_game, 0, 0, 2, 1, 0, 0),
+       incrementer(current_game, 0, 1, 0, 1, 0, 0),
+       incrementer(current_game, 0, 1, 1, 1, 0, 0),
+       incrementer(current_game, 0, 1, 2, 1, 0, 0),
+       incrementer(current_game, 0, 2, 0, 1, 0, 0),
+       incrementer(current_game, 0, 2, 1, 1, 0, 0),
+       incrementer(current_game, 0, 2, 2, 1, 0, 0)],
       # STAIRS
-      [incrementer(current_game,0,0,0,1,0,1),
-        incrementer(current_game,0,1,0,1,0,1),
-        incrementer(current_game,0,2,0,1,0,1),
-        incrementer(current_game,0,2,0,1,-1,0),
-        incrementer(current_game,0,2,1,1,-1,0),
-        incrementer(current_game,0,2,2,1,-1,0),
-        incrementer(current_game,0,2,2,1,0,-1),
-        incrementer(current_game,0,1,2,1,0,-1),
-        incrementer(current_game,0,0,2,1,0,-1),
-        incrementer(current_game,0,0,2,1,1,0),
-        incrementer(current_game,0,0,1,1,1,0),
-        incrementer(current_game,0,0,0,1,1,0),],
+      [incrementer(current_game, 0, 0, 0, 1, 0, 1),
+       incrementer(current_game, 0, 1, 0, 1, 0, 1),
+       incrementer(current_game, 0, 2, 0, 1, 0, 1),
+       incrementer(current_game, 0, 2, 0, 1, -1, 0),
+       incrementer(current_game, 0, 2, 1, 1, -1, 0),
+       incrementer(current_game, 0, 2, 2, 1, -1, 0),
+       incrementer(current_game, 0, 2, 2, 1, 0, -1),
+       incrementer(current_game, 0, 1, 2, 1, 0, -1),
+       incrementer(current_game, 0, 0, 2, 1, 0, -1),
+       incrementer(current_game, 0, 0, 2, 1, 1, 0),
+       incrementer(current_game, 0, 0, 1, 1, 1, 0),
+       incrementer(current_game, 0, 0, 0, 1, 1, 0)],
       # DIAMOND STAIRS
-      [incrementer(current_game,0,0,0,1,1,1),
-        incrementer(current_game,0,2,0,1,-1,1),
-        incrementer(current_game,0,2,2,1,-1,-1),
-        incrementer(current_game,0,0,2,1,1,-1)]]
+      [incrementer(current_game, 0, 0, 0, 1, 1, 1),
+       incrementer(current_game, 0, 2, 0, 1, -1, 1),
+       incrementer(current_game, 0, 2, 2, 1, -1, -1),
+       incrementer(current_game, 0, 0, 2, 1, 1, -1)]
+    ]
 
     # above moves will == 'xxx' or 'ooo' if combo has been made
     combo_key = %w[xxx ooo]

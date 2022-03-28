@@ -5,7 +5,6 @@ require_relative 'adjudicator'
 require_relative 'turn_master'
 
 class GameMode
-
   MAX_TURNS = 27
   #----- PvP MODE -----
 

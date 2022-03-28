@@ -35,7 +35,7 @@ class Player
       # if the move is not valid, restart loop
       elsif !GameValidator.new.is_valid(move)
         GameOutput.new.print_game(player_x, player_o, game_squares, x_tally, o_tally)
-        puts "\nInvalid Move! Try again.\n"
+        GameOutput.new.user_error(1)
       # if the move is not unique, check on next board
       elsif !GameValidator.new.is_unique(move, game_squares)
         # adds 3 to row (2a -> 5a) same spot on next board
@@ -56,7 +56,7 @@ class Player
           # if move is not unique, then stack is full. restart turn loop
           elsif !GameValidator.new.is_unique(move, game_squares)
             GameOutput.new.print_game(player_x, player_o, game_squares, x_tally, o_tally)
-            puts "\nStack is full! Try again.\n"
+            GameOutput.new.user_error(2)
           end
         end
       end
