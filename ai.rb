@@ -4,17 +4,19 @@ require_relative 'game_output'
 require_relative 'adjudicator'
 
 class Ai
+  NAMES = ['Bob', 'Jenny', 'HorseyChick93', 'SpicyKing22', 'Albert', 'ThePun!sh3r', 'Kyle', 'PJ', 'David',
+           'Samantha', 'Charlie', 'Keegan', 'TheGodfather', 'Janice'].freeze
+
+  LETTERS = %w[a b c].freeze
+
   # returns a random name from list
   def name
-    names = ['Bob', 'Jenny', 'HorseyChick93', 'SpicyKing22', 'Albert', 'ThePun!sh3r', 'Kyle', 'PJ', 'David',
-             'Samantha', 'Charlie', 'Keegan', 'TheGodfather', 'Janice']
-    names[rand(names.length)]
+    NAMES[rand(NAMES.length)]
   end
 
   # returns a random move, i.e. "2c"
   def get_move
-    letters = %w[a b c]
-    random_letter = letters[rand(3)]
+    random_letter = LETTERS[rand(3)]
     random_number = rand(1..3).to_s
     random_move = (random_number + random_letter).strip
     random_move.to_s

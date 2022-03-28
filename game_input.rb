@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'game_output'
+require_relative 'game_validator'
 
 class GameInput
   # rearranges a2 => 2a etc.
@@ -11,7 +12,7 @@ class GameInput
   # gets move from player
   def get_move
     move = gets.strip
-    reorder_move(move)
+    GameValidator.new.reorder_move(move)
   end
 
   # Wait for enter screen
