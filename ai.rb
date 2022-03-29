@@ -25,7 +25,6 @@ class Ai
   def add_move(token, move, game)
     move_key = GameValidator.new.move_converter(move)
     game[move_key[0]][move_key[1]][move_key[2]] = token
-
   end
 
   # adds 3 to row (i.e. 2a -> 5a) = same spot on next board
@@ -56,7 +55,6 @@ class Ai
     false
   end
 
-
   # Play AI turn
   def play_ai_turn(player_x, player_o, player_name, token, game_squares)
     # set current score set as variable
@@ -85,5 +83,3 @@ class Ai
     end
   end
 end
-
-

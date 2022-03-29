@@ -11,7 +11,6 @@ class Player
   def add_move(token, move, game)
     move_key = GameValidator.new.move_converter(move)
     game[move_key[0]][move_key[1]][move_key[2]] = token
-
   end
 
   # adds 3 to row (i.e. 2a -> 5a) = same spot on next board

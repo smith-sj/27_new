@@ -71,7 +71,7 @@ class GameValidator
   # Checks if move has already been played
   def is_unique(move, game)
     move_key = move_converter(move)
-    game[move_key[0]][move_key[1]][move_key[2]] == " "
+    game[move_key[0]][move_key[1]][move_key[2]] == ' '
   end
 
   def reorder_move(move)
