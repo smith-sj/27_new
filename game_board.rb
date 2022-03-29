@@ -3,20 +3,28 @@
 class GameBoard
   attr_accessor :squares
 
-  def initialize
+  ROWS = 3
+  BOARDS = 3
+  COLUMNS = 3
+
+  def squares
+    # @squares = [[[' ']*COLUMNS]*ROWS]*COLUMNS
+
     @squares = [
-      # board 1
-      [[' ', ' ', ' '],
-       [' ', ' ', ' '],
-       [' ', ' ', ' ']],
-      # board 2
-      [[' ', ' ', ' '],
-       [' ', ' ', ' '],
-       [' ', ' ', ' ']],
-      # baord 3
-      [[' ', ' ', ' '],
-       [' ', ' ', ' '],
-       [' ', ' ', ' ']]
-    ]
+    # board 1
+    [[' ', ' ', ' '],
+      [' ', ' ', ' '],
+      [' ', ' ', ' ']],
+    # board 2
+    [[' ', ' ', ' '],
+      [' ', ' ', ' '],
+      [' ', ' ', ' ']],
+    # baord 3
+    [[' ', ' ', ' '],
+      [' ', ' ', ' '],
+      [' ', ' ', ' ']]
+  ]
   end
+
+
 end
