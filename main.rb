@@ -38,7 +38,7 @@ loop do
     when '3'
       setup_clean_board
       GameMode.new.ai_v_ai(@game_squares)
-      GameInput.wait_for_enter('continues')
+      GameInput.new.wait_for_enter('continues')
       break
     # Read Rules
     when '4'

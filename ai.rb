@@ -22,28 +22,54 @@ class Ai
     random_move.to_s
   end
 
-  # Add current move to game
-  def add_move(player, move, game)
+  def add_move(token, move, game)
     move_key = GameValidator.new.move_converter(move)
-    game[move_key[0]][move_key[1]][move_key[2]] = player
+    game[move_key[0]][move_key[1]][move_key[2]] = token
+
   end
 
-  def play_ai_turn(player_x, player_o, player_name, token, game_squares)
-    x_tally = Adjudicator.new.tally_up(game_squares)[0][:x_tally]
-    o_tally = Adjudicator.new.tally_up(game_squares)[1][:o_tally]
+  # adds 3 to row (i.e. 2a -> 5a) = same spot on next board
+  def move_up_board(move)
+    move[0..0] = ((move[0]).to_i + 3).to_s
+    move
+  end
 
-    # Print current game
-
+  # loop that moves the players current move up boards
+  def move_up_loop(move, game_squares, token, player_x, player_o, x_tally, o_tally)
+    i = 0
+    new_move = move_up_board(move)
+    while i < 2
+      # if the new move is unique add it to second board
+      if GameValidator.new.is_unique(new_move, game_squares)
+        add_move(token, new_move, game_squares)
+        GameOutput.new.print_game(player_x, player_o, game_squares, x_tally, o_tally)
+        return true
+        break
+      # if the move is not unique, check on final board
+      else
+        move_up_board(new_move)
+        i += 1
+      end
+    end
+    # If the loop didn't return a value, then the stack is full, return false
     GameOutput.new.print_game(player_x, player_o, game_squares, x_tally, o_tally)
-    puts "\nWaiting for #{player_name}..."
+    false
+  end
 
-    # Delays AI's turn to look like it's thinking
-    sleep rand(3..6)
 
-    # Check move is valid and unique
+  # Play AI turn
+  def play_ai_turn(player_x, player_o, player_name, token, game_squares)
+    # set current score set as variable
+    x_tally = Adjudicator.new.tally_up_x(game_squares)
+    o_tally = Adjudicator.new.tally_up_o(game_squares)
+    # Print current game board
+    GameOutput.new.print_game(player_x, player_o, game_squares, x_tally, o_tally)
+    # Starts a turn loop, in case move is invalid or not unique
+    puts "Waiting for #{player_name}..."
+    sleep rand(3..4)
     loop do
-      # get AI move
-      move = Ai.new.get_move
+      # get the move
+      move = get_move
       # if the move is valid and unique, add to game
       if GameValidator.new.is_valid(move) && GameValidator.new.is_unique(move, game_squares)
         add_move(token, move, game_squares)
@@ -52,31 +78,12 @@ class Ai
       # if the move is not valid, restart loop
       elsif !GameValidator.new.is_valid(move)
         GameOutput.new.print_game(player_x, player_o, game_squares, x_tally, o_tally)
-        puts "\nInvalid Move! Try again.\n"
-      # if the move is not unique, check on next board
+      # if the move is not unique, start loop that moves up boards
       elsif !GameValidator.new.is_unique(move, game_squares)
-        # adds 3 to row (2a -> 5a) same spot on next board
-        move[0..0] = ((move[0]).to_i + 3).to_s
-        # if the new move is unique add it to second board
-        if GameValidator.new.is_unique(move, game_squares)
-          add_move(token, move, game_squares)
-          GameOutput.new.print_game(player_x, player_o, game_squares, x_tally, o_tally)
-          break
-        # if the move is not unique, check on final board
-        elsif !GameValidator.new.is_unique(move, game_squares)
-          move[0..0] = ((move[0]).to_i + 3).to_s
-          # if move is unique add it to last board
-          if GameValidator.new.is_unique(move, game_squares)
-            add_move(token, move, game_squares)
-            GameOutput.new.print_game(player_x, player_o, game_squares, x_tally, o_tally)
-            break
-          # if move is not unique, then stack is full. restart turn loop
-          elsif !GameValidator.new.is_unique(move, game_squares)
-            GameOutput.new.print_game(player_x, player_o, game_squares, x_tally, o_tally)
-            puts "\nStack is full! Try again.\n"
-          end
-        end
+        move_up_loop(move, game_squares, token, player_x, player_o, x_tally, o_tally) ? break : nil
       end
     end
   end
 end
+
+
