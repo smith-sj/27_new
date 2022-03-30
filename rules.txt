@@ -1,0 +1,207 @@
+
+              ::::::::  :::::::::::  
+             :+:    :+: :+:     :+:  
+                  +:+         +:+    
+               +#+          +#+      
+            +#+           +#+        
+          #+#           #+#          
+         ##########     ###          
+
+
+How to play
+
+The aim of Twenty-Seven is to earn points by making combinations of Flats, Pillars and Stairs. When all 27 squares
+are full, the player with the most points is the winner.
+
+To play, imagine a game similar to Naughts & Crosses but in a 3D space, represented by 3 game boards.
+The top-most board, Board 3, represents the highest plane; and the bottom-most board, Board 1, represents the lowest plane.
+Board 2 represents the middle plane.
+
+
+board 3
+
+| | | |
+| | | |
+| | | |
+
+board 2
+
+| | | |
+| | | |
+| | | |
+
+board 1
+
+| | | |
+| | | |
+| | | |
+
+Players take turns placing their respective tokens on the board, attempting to make combinations of 3; both, on a single plane, and across 
+multiple planes. Players may only place tokens on higher planes if the same square is occupied on the lower plane.
+(Imagine the tokens are being stacked.)
+
+Unlike Naughts & Crosses, the game does not end when a single combintation is made. Instead, the player is awarded points for the combination
+and the game continues until every square has been filled or one of the players forfeits.
+
+--------------------------------------
+
+Combinations & Points
+
+--------------------------------------
+
+Flats
+
+Example:
+3 tokens are placed in a flat row, straight or diagonal, across the board; this is called
+a "flat" and is awarded 3 points.
+
+
+| | | |
+| | | |
+| | | |
+
+
+| | | |
+| | | |
+| | | |
+
+
+| | | |
+| | | |
+|o|o|o| = 3 points
+
+   __ _ _
+  /_/_/_/\
+ /_/_/_/\/\
+/_/_/_/\/\/\
+\_\_\_\/\/\/
+ \_\_\_\/\/
+  \o\o\o\/
+
+
+--------------------------------------
+
+Pillars
+
+Example:
+3 tokens are stacked on top of each other; this is called a "pillar" and is 
+awarded 2 points.
+
+| | | |
+| | | |
+| | |x|
+
+
+| | | |
+| | | |
+| | |x|
+
+
+| | | |
+| | | |
+| | |x| = 2 points
+
+   __ _ _
+  /_/_/_/\
+ /_/_/_/\/\
+/_/_/_/\/\/\
+\_\_\x\/\/\/
+ \_\_\x\/\/
+  \_\_\x\/
+
+
+
+--------------------------------------
+
+Stairs
+
+Example:
+3 tokens are stacked from one side of the board to the opposite, and from 
+the bottom plane to the top; this is called "stairs" and is awarded 2 points. 
+
+
+
+| | | |
+| | | |
+|x| | |
+
+
+| | | |
+| | | |
+|o|x| |
+
+
+| | | |
+| | | |
+|o|o|x| = 2 points       
+     
+   __ _ _
+  /_/_/_/\
+ /_/_/_/\/\
+/_/_/_/\/\/\
+\x\_\_\/\/\/
+ \o\x\_\/\/
+  \o\o\x\/
+
+
+--------------------------------------
+
+Diamond Stairs
+
+3 tokens are stacked diagonally from one corner to the opposite, and from the 
+bottom plane to the top. This is called "diamond stairs" and is awarded 1 point.
+
+
+|x| | |
+| | | |
+| | | |
+
+
+|o| | |
+| |x| |
+| | | |
+
+
+|o| | |
+| |o| |
+| | |x| = 1 point
+
+   __ 
+  /x/\ _ _
+  \_\/_/_/\
+  /_/x/_/\/\
+ /_/\_\_\/\/
+ \_\/_/x/\/
+  \_\_\_\/
+
+
+--------------------------------------
+
+ILLEGAL MOVES
+
+
+This is an illegal move. Notice that the x's are not stacked on anything.
+
+| | | |
+| | | |
+|x| | |
+
+
+| | | |
+| | | |
+| |x| |
+
+
+| | | |
+| | | |
+| | |x| = 1 point
+  
+   __ _ _
+  /_/_/_/\
+ /_/_/_/\/\
+/_/_/_/\/\/\
+\x\_\_\/\/\/
+   \x\_\/\/
+ !    \x\/
+
+
